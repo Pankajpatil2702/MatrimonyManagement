@@ -13,18 +13,18 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Entity
-@Table(name= "religions")
 @Data
-@NoArgsConstructor
+@Table(name = "states")
 @AllArgsConstructor
+@NoArgsConstructor
 @ToString
-public class Religion {
+public class State {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
-	private LocalDateTime createdat;
-	private LocalDateTime updatedat;
+	private LocalDateTime createdAt;
+	private LocalDateTime updatedAt;
 
 }
