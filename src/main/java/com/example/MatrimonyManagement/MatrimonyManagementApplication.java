@@ -8,7 +8,7 @@ public class MatrimonyManagementApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(MatrimonyManagementApplication.class, args);
-		System.out.println(" Matrimony Management system project Running.........");
+		System.out.println(" Matrimony Management system project Running.........");	
 	}
 
 }

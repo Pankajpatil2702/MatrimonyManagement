@@ -10,6 +10,7 @@ import com.example.MatrimonyManagement.repositories.ReligionRepository;
 import com.example.MatrimonyManagement.service.ReligionService;
 @Service
 public class ReligionIMPL implements ReligionService {
+	
 	@Autowired
 	ReligionRepository religionRepository;
 

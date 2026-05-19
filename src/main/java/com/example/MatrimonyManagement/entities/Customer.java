@@ -40,6 +40,7 @@ public class Customer {
 	private long income;
 	private String materialStatus;
 	private String address;
+	private String token;	
 	private LocalDateTime createdAt;
 	private LocalDateTime updatedAt;
 	
@@ -77,12 +78,6 @@ public class Customer {
 	@JoinColumn(name = "villageId")
 	@JsonIgnoreProperties(value = "villageId" , allowSetters = true)
 	private Village villageId;
-	
-	
-	
-	
-	
-	
 	
 	
 	

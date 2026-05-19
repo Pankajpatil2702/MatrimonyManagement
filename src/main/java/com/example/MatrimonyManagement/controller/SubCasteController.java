@@ -21,6 +21,8 @@ import com.example.MatrimonyManagement.entities.SubCaste;
 import com.example.MatrimonyManagement.service.CasteService;
 import com.example.MatrimonyManagement.service.SubCasteService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/subcaste")
 public class SubCasteController {
@@ -33,7 +35,7 @@ public class SubCasteController {
 	
 	
 	@PostMapping("/")
-	public ResponseEntity<SubCaste> saveSubCaste(@RequestBody SubCasteDto subCasteDto){
+	public ResponseEntity<SubCaste> saveSubCaste(@Valid @RequestBody SubCasteDto subCasteDto){
 		
 		SubCaste subCaste = new SubCaste();
 		subCaste.setSubCasteName(subCasteDto.getSubCasteName());
@@ -82,7 +84,7 @@ public class SubCasteController {
 	
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<SubCaste> updateSubCasteById(@PathVariable("/id") int id, @RequestBody SubCasteDto subCasteDto){
+	public ResponseEntity<SubCaste> updateSubCasteById(@Valid @PathVariable("id") int id, @RequestBody SubCasteDto subCasteDto){
 		
 		SubCaste subCaste = new SubCaste();
 		subCaste.setSubCasteName(subCasteDto.getSubCasteName());
@@ -115,12 +117,6 @@ public class SubCasteController {
 		return new ResponseEntity<>(HttpStatus.MOVED_PERMANENTLY);
 				
 	}
-	
-	
-	
-	
-	
-	
 	
 	
 	

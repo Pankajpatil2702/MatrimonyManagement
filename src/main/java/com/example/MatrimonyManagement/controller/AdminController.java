@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,7 +19,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.MatrimonyManagement.dto.AdminDto;
 import com.example.MatrimonyManagement.entities.Admin;
+import com.example.MatrimonyManagement.entities.Role;
 import com.example.MatrimonyManagement.service.AdminSerivce;
+
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/admin")
@@ -28,15 +32,19 @@ public class AdminController {
 	@Autowired
 	private AdminSerivce adminSerivce;
 	
-	@PostMapping("/")
-	public ResponseEntity<Admin> saveAdmin(@RequestBody AdminDto adminDto){
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+	
+	@PostMapping("/register")
+	public ResponseEntity<Admin> saveAdmin(@Valid @RequestBody AdminDto adminDto){
 		
 		Admin admin = new Admin();
 		
 		admin.setName(adminDto.getName());
 		admin.setEmail(adminDto.getEmail());
-		admin.setPassword(adminDto.getPassword());
-		admin.setRole(adminDto.getRole());
+		admin.setToken(adminDto.getToken());
+		admin.setPassword(passwordEncoder.encode(adminDto.getPassword()));
+		admin.setRole(Role.Admin);
 		admin.setCreatedAt(LocalDateTime.now());
 		admin.setUpdatesAt(LocalDateTime.now());
 		
@@ -76,7 +84,7 @@ public class AdminController {
 	
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Admin> updateAdminById(@PathVariable("id") int id, @RequestBody AdminDto adminDto){
+	public ResponseEntity<Admin> updateAdminById(@Valid @PathVariable("id") int id, @RequestBody AdminDto adminDto){
 		
 		Admin admin = adminSerivce.getAdminById(id);
 		
@@ -87,7 +95,7 @@ public class AdminController {
 		admin.setName(adminDto.getName());
 		admin.setEmail(adminDto.getEmail());
 		admin.setPassword(adminDto.getPassword());
-		admin.setRole(adminDto.getRole());
+		admin.setRole(Role.Admin);
 		admin.setCreatedAt(LocalDateTime.now());
 		admin.setUpdatesAt(LocalDateTime.now());
 		
@@ -110,8 +118,6 @@ public class AdminController {
 		return new ResponseEntity<>(HttpStatus.MOVED_PERMANENTLY);
 		
 	}
-	
-	
 	
 	
 	

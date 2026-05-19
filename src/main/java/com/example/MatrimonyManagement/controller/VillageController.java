@@ -21,6 +21,8 @@ import com.example.MatrimonyManagement.entities.Village;
 import com.example.MatrimonyManagement.service.TalukaService;
 import com.example.MatrimonyManagement.service.VillageService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/village")
 public class VillageController {
@@ -33,7 +35,7 @@ public class VillageController {
 	
 	
 	@PostMapping("/")
-	public ResponseEntity<Village> saveVillageData(@RequestBody VillageDto villageDto){
+	public ResponseEntity<Village> saveVillageData(@Valid @RequestBody VillageDto villageDto){
 		
 		Village village = new Village();
 		village.setName(villageDto.getName());
@@ -88,7 +90,7 @@ public class VillageController {
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Village> updateVillageById(@PathVariable("id") int id, @RequestBody VillageDto villageDto){
+	public ResponseEntity<Village> updateVillageById(@Valid @PathVariable("id") int id, @RequestBody VillageDto villageDto){
 		
 		Village village = villageService.getVillageById(id);
 		
@@ -133,9 +135,6 @@ public class VillageController {
 		
 		return new ResponseEntity<>(HttpStatus.MOVED_PERMANENTLY);
 	}
-	
-	
-	
 	
 	
 	

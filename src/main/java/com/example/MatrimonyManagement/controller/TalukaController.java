@@ -23,6 +23,8 @@ import com.example.MatrimonyManagement.entities.Taluka;
 import com.example.MatrimonyManagement.service.DistrictService;
 import com.example.MatrimonyManagement.service.TalukaService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/taluka")
 public class TalukaController {
@@ -35,7 +37,7 @@ public class TalukaController {
 	
 	
 	@PostMapping("/")
-	public ResponseEntity<Taluka> saveTaluka(@RequestBody TalukaDto talukaDto){
+	public ResponseEntity<Taluka> saveTaluka(@Valid @RequestBody TalukaDto talukaDto){
 		
 		Taluka taluka = new Taluka();
 		taluka.setTalukaName(talukaDto.getTalukaName());
@@ -88,7 +90,7 @@ public class TalukaController {
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Taluka> updateTalukaById(@PathVariable("id") int id, @RequestBody TalukaDto talukaDto){
+	public ResponseEntity<Taluka> updateTalukaById(@Valid @PathVariable("id") int id, @RequestBody TalukaDto talukaDto){
 		
 		Taluka taluka = talukaService.findTalukaById(id);
 		

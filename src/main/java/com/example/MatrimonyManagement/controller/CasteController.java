@@ -21,6 +21,8 @@ import com.example.MatrimonyManagement.entities.Religion;
 import com.example.MatrimonyManagement.service.CasteService;
 import com.example.MatrimonyManagement.service.ReligionService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/caste")
 public class CasteController {
@@ -32,7 +34,7 @@ public class CasteController {
 	private ReligionService religionService;
 	
 	@PostMapping
-	public ResponseEntity<Caste> saveCaste(@RequestBody CasteDto casteDto){
+	public ResponseEntity<Caste> saveCaste(@Valid @RequestBody CasteDto casteDto){
 		
 		Caste caste = new Caste();
 		caste.setCasteName(casteDto.getCasteName());
@@ -84,7 +86,7 @@ public class CasteController {
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Caste> updateCaste(@PathVariable("id") int id, @RequestBody CasteDto casteDto){
+	public ResponseEntity<Caste> updateCaste(@Valid @PathVariable("id") int id, @RequestBody CasteDto casteDto){
 		
 		Caste caste = casteService.findCasteById(id);
 		

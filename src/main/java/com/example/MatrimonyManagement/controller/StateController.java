@@ -22,6 +22,8 @@ import com.example.MatrimonyManagement.dto.StateDto;
 import com.example.MatrimonyManagement.entities.State;
 import com.example.MatrimonyManagement.service.StateService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/state")
 public class StateController {
@@ -30,7 +32,7 @@ public class StateController {
 	private StateService stateService;
 	
 	@PostMapping("/")
-	public ResponseEntity<State> saveState(@RequestBody StateDto stateDto){
+	public ResponseEntity<State> saveState(@Valid @RequestBody StateDto stateDto){
 		
 		State state = new State();
 		
@@ -71,7 +73,7 @@ public class StateController {
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<State> updateState(@PathVariable("id") int id, @RequestBody StateDto stateDto){
+	public ResponseEntity<State> updateState(@Valid @PathVariable("id") int id, @RequestBody StateDto stateDto){
 		
 		State state = stateService.getStateById(id);
 		

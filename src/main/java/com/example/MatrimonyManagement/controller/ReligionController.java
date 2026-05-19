@@ -21,6 +21,8 @@ import com.example.MatrimonyManagement.dto.ReligionDTO;
 import com.example.MatrimonyManagement.entities.Religion;
 import com.example.MatrimonyManagement.service.ReligionService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/religion")
 @CrossOrigin
@@ -31,7 +33,7 @@ public class ReligionController {
 	
 	
 	@PostMapping("/register")
-	public ResponseEntity<Religion> saveReligion(@RequestBody ReligionDTO religionDTO){
+	public ResponseEntity<Religion> saveReligion(@Valid @RequestBody ReligionDTO religionDTO){
 		Religion religion = new Religion();
 		religion.setName(religionDTO.getName());
 		religion.setCreatedat(LocalDateTime.now());
@@ -68,7 +70,7 @@ public class ReligionController {
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Religion> updateReligion(@PathVariable("id") int id,  @RequestBody ReligionDTO religionDTO){
+	public ResponseEntity<Religion> updateReligion(@Valid @PathVariable("id") int id,  @RequestBody ReligionDTO religionDTO){
 		
 		Religion religion = religionService.getReligionById(id);
 		

@@ -1,5 +1,6 @@
 package com.example.MatrimonyManagement.controller;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,8 @@ import com.example.MatrimonyManagement.dto.ConsultancyDto;
 import com.example.MatrimonyManagement.entities.Consultancy;
 import com.example.MatrimonyManagement.service.ConsultancyService;
 
+import jakarta.validation.Valid;
+
 
 @RestController
 @RequestMapping("/consultancy")
@@ -27,15 +30,16 @@ public class ConsultancyContoller {
 	
 	
 	
-	@PostMapping
-	public ResponseEntity<Consultancy> saveConsultancy(@RequestBody ConsultancyDto consultancyDto){
+	@PostMapping("/")
+	public ResponseEntity<Consultancy> saveConsultancy(@Valid @RequestBody ConsultancyDto consultancyDto){
 		
 		Consultancy consultancy = new Consultancy();
 		consultancy.setName(consultancyDto.getName());
 		consultancy.setEmail(consultancyDto.getEmail());
 		consultancy.setPhoneNo(consultancyDto.getPhoneNo());
 		consultancy.setAddress(consultancyDto.getAddress());
-		consultancy.setCreatedAt(consultancyDto.getCreatedAt());
+		consultancy.setCreatedAt(LocalDateTime.now());
+		consultancy.setUpdatedAt(LocalDateTime.now());
 		
 		Consultancy saveConsultancy = consultancyService.saveConsultancy(consultancy);
 		
@@ -74,7 +78,7 @@ public class ConsultancyContoller {
 	
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Consultancy> updateConsultancyById(@PathVariable("id") int id, @RequestBody ConsultancyDto consultancyDto){
+	public ResponseEntity<Consultancy> updateConsultancyById(@Valid @PathVariable("id") int id, @RequestBody ConsultancyDto consultancyDto){
 	
 		
 		Consultancy consultancy = consultancyService.getConsultancyById(id);
@@ -89,7 +93,8 @@ public class ConsultancyContoller {
 		consultancy.setEmail(consultancyDto.getEmail());
 		consultancy.setPhoneNo(consultancyDto.getPhoneNo());
 		consultancy.setAddress(consultancyDto.getAddress());
-		consultancy.setCreatedAt(consultancyDto.getCreatedAt());
+		consultancy.setCreatedAt(LocalDateTime.now());
+		consultancy.setUpdatedAt(LocalDateTime.now());
 		
 		Consultancy updateConsultancy = consultancyService.saveConsultancy(consultancy);
 		

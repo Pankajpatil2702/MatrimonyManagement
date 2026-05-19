@@ -1,26 +1,25 @@
 package com.example.MatrimonyManagement.dto;
 
-import java.time.LocalDateTime;
-
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Getter
 @Setter
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class ConsultancyUserDto {
+public class AuthDto {
 	
-	private String name;
+	@NotBlank(message = "Email is required")
 	private String email;
+	
+	@NotBlank(message = "Password is required")
+	@Size(min = 6, message = "Password must be at least 6 characters")
 	private String password;
-	private String role;
-	private LocalDateTime createdAt;
-	private LocalDateTime updatedAt;
 
-	private int consultancyId;
 }

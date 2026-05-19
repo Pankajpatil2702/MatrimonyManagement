@@ -33,6 +33,8 @@ import com.example.MatrimonyManagement.service.SubCasteService;
 import com.example.MatrimonyManagement.service.TalukaService;
 import com.example.MatrimonyManagement.service.VillageService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/customer")
 public class CustomerController {
@@ -63,8 +65,8 @@ public class CustomerController {
 	
 	
 	
-	@PostMapping("/")
-	public ResponseEntity<Customer> saveCustomer(@RequestBody CustomerDto customerDto){
+	@PostMapping("/register")
+	public ResponseEntity<Customer> saveCustomer(@Valid @RequestBody CustomerDto customerDto){
 		
 		Customer customer = new Customer();
 		customer.setName(customerDto.getName());
@@ -142,7 +144,7 @@ public class CustomerController {
 	
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Customer> updateCustomerById(@PathVariable("id") int id, @RequestBody CustomerDto customerDto){
+	public ResponseEntity<Customer> updateCustomerById(@Valid @PathVariable("id") int id, @RequestBody CustomerDto customerDto){
 		
 		Customer customer = customerService.getCustomerById(id);
 		

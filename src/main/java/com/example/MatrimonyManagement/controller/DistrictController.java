@@ -21,6 +21,8 @@ import com.example.MatrimonyManagement.entities.State;
 import com.example.MatrimonyManagement.service.DistrictService;
 import com.example.MatrimonyManagement.service.StateService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/district")
 public class DistrictController {
@@ -32,8 +34,8 @@ public class DistrictController {
 	private StateService stateService;
 	
 	
-	@PostMapping
-	public ResponseEntity<District> saveDistrict(@RequestBody DistrictDto districtDto){
+	@PostMapping("/")
+	public ResponseEntity<District> saveDistrict(@Valid @RequestBody DistrictDto districtDto){
 		
 		District district = new District();
 		district.setDistrictName(districtDto.getDistrictName());
@@ -86,7 +88,7 @@ public class DistrictController {
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<District> updateDistrictById(@PathVariable("id") int id, @RequestBody DistrictDto districtDto){
+	public ResponseEntity<District> updateDistrictById(@Valid @PathVariable("id") int id, @RequestBody DistrictDto districtDto){
 		
 		District district = districtService.findDistrictById(id);
 		

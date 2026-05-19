@@ -21,6 +21,8 @@ import com.example.MatrimonyManagement.dto.PlanDto;
 import com.example.MatrimonyManagement.entities.Plan;
 import com.example.MatrimonyManagement.service.PlanService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/plan")
 public class PlanController {
@@ -30,7 +32,7 @@ public class PlanController {
 	
 	
 	@PostMapping("/")
-	public ResponseEntity<Plan> savePlan(@RequestBody PlanDto planDto){
+	public ResponseEntity<Plan> savePlan(@Valid @RequestBody PlanDto planDto){
 		
 		Plan plan = new Plan();
 		
@@ -72,7 +74,7 @@ public class PlanController {
 		
 	}
 	@PutMapping("/{id}")
-	public ResponseEntity<Plan> updatePlan(@PathVariable("id") int id,@RequestBody PlanDto planDto ){
+	public ResponseEntity<Plan> updatePlan(@Valid @PathVariable("id") int id,@RequestBody PlanDto planDto ){
 		Plan plan = planService.getPlanById(id);	
 		if(plan == null) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);

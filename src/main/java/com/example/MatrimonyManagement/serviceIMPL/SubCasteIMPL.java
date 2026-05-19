@@ -6,36 +6,79 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.MatrimonyManagement.entities.SubCaste;
+import com.example.MatrimonyManagement.exception.DataBaseException;
+import com.example.MatrimonyManagement.exception.ResourceNotFoundException;
 import com.example.MatrimonyManagement.repositories.SubCasteRepository;
 import com.example.MatrimonyManagement.service.SubCasteService;
 
 @Service
 public class SubCasteIMPL implements SubCasteService {
 
-	@Autowired
-	private SubCasteRepository subCasteRepository;
-	@Override
-	public SubCaste saveSubCaste(SubCaste caste) {
-		// TODO Auto-generated method stub
-		return subCasteRepository.save(caste);
-	}
+    @Autowired
+    private SubCasteRepository subCasteRepository;
 
-	@Override
-	public List<SubCaste> findAllSubCaste() {
-		// TODO Auto-generated method stub
-		return subCasteRepository.findAll();
-	}
+    @Override
+    public SubCaste saveSubCaste(SubCaste caste) {
 
-	@Override
-	public SubCaste findSubCasteById(int id) {
-		// TODO Auto-generated method stub
-		return subCasteRepository.findById(id).orElse(null);
-	}
+        try {
 
-	@Override
-	public void deleteSubCasteById(int id) {
-		// TODO Auto-generated method stub
-		subCasteRepository.deleteById(id);
-	}
+            return subCasteRepository.save(caste);
+
+        } catch (Exception e) {
+
+            throw new DataBaseException("Failed to save sub caste due to database error");
+        }
+    }
+
+    @Override
+    public List<SubCaste> findAllSubCaste() {
+
+        try {
+
+            return subCasteRepository.findAll();
+
+        } catch (Exception e) {
+
+            throw new DataBaseException("Failed to fetch sub castes due to database error");
+        }
+    }
+
+    @Override
+    public SubCaste findSubCasteById(int id) {
+
+        try {
+
+            return subCasteRepository.findById(id)
+                    .orElseThrow(() -> new ResourceNotFoundException("Sub caste not found with id " + id));
+
+        } catch (ResourceNotFoundException e) {
+
+            throw e;
+
+        } catch (Exception e) {
+
+            throw new DataBaseException("Failed to fetch sub caste due to database error");
+        }
+    }
+
+    @Override
+    public void deleteSubCasteById(int id) {
+
+        try {
+
+            SubCaste subCaste = subCasteRepository.findById(id)
+                    .orElseThrow(() -> new ResourceNotFoundException("Sub caste not found with id " + id));
+
+            subCasteRepository.delete(subCaste);
+
+        } catch (ResourceNotFoundException e) {
+
+            throw e;
+
+        } catch (Exception e) {
+
+            throw new DataBaseException("Failed to delete sub caste due to database error");
+        }
+    }
 
 }
