@@ -38,5 +38,7 @@ public class Admin {
 		private Role role;
 		private LocalDateTime createdAt;
 		private LocalDateTime updatesAt;
+		private boolean isEmailVerify;  
+		private int emailOtp;
 
 }

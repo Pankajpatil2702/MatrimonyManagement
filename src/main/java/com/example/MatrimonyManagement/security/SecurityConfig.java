@@ -16,7 +16,7 @@ public class SecurityConfig {
 	@Autowired
 	private JwtAuthenticationFilter jwtAuthenticationFilter;
 	
-	@Autowired
+	@Autowired    
 	private JwtAuthEntryPoint jwtAuthEntryPoint;
 	
 	@Bean
@@ -28,7 +28,7 @@ public class SecurityConfig {
 			.authorizeHttpRequests(auth -> auth 
 					.requestMatchers("/admin/register",
 					        "/customer/register",
-					        "/auth/login").permitAll()
+					        "/auth/login/admin","/email/send","/email/verify-email-otp").permitAll()
 					.anyRequest().authenticated()
 					)
 			.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)

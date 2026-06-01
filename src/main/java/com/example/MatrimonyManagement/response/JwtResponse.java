@@ -1,6 +1,5 @@
 package com.example.MatrimonyManagement.response;
 
-import com.example.MatrimonyManagement.entities.Admin;
 import com.example.MatrimonyManagement.entities.Role;
 
 import lombok.AllArgsConstructor;
