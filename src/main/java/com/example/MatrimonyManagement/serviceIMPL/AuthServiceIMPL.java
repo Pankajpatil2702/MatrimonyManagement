@@ -1,7 +1,5 @@
 package com.example.MatrimonyManagement.serviceIMPL;
 
-import javax.management.RuntimeErrorException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -22,7 +20,7 @@ public class AuthServiceIMPL implements AuthService {
 	
 	@Autowired
 	private PasswordEncoder passwordEncoder;
-	
+	 
 	@Autowired
 	private JwtUtil jwtUtil;
 	

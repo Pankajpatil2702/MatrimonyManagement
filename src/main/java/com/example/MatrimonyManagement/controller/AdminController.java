@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.MatrimonyManagement.dto.AdminDto;
@@ -41,7 +40,7 @@ public class AdminController {
 		Admin admin = new Admin();
 		
 		admin.setName(adminDto.getName());
-		admin.setEmail(adminDto.getEmail());
+		admin.setEmail(adminDto.getEmail());    
 		admin.setToken(adminDto.getToken());
 		admin.setPassword(passwordEncoder.encode(adminDto.getPassword()));
 		admin.setRole(Role.Admin);
@@ -54,7 +53,7 @@ public class AdminController {
 	}
 	
 	@GetMapping("/")
-	public ResponseEntity<List<Admin>> getAllAdmins(){
+	public ResponseEntity<List<Admin>> getAllAdmins(){   
 		
 
 		List<Admin> admin = adminSerivce.getAllAdmin();
@@ -118,9 +117,6 @@ public class AdminController {
 		return new ResponseEntity<>(HttpStatus.MOVED_PERMANENTLY);
 		
 	}
-	
-	
-	
 	
 	
 	
