@@ -8,9 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.MatrimonyManagement.dto.EmailRequest;
+import com.example.MatrimonyManagement.dto.PasswordResetDto;
 import com.example.MatrimonyManagement.dto.VerifyEmailOtpDto;
 import com.example.MatrimonyManagement.response.EmailResponse;
 import com.example.MatrimonyManagement.response.LoginResponse;
+import com.example.MatrimonyManagement.service.AuthService;
 import com.example.MatrimonyManagement.service.EmailService;
 import com.example.MatrimonyManagement.service.VerifyOtpService;
 
@@ -22,6 +24,9 @@ public class EmailController {
 	
 	@Autowired
 	private EmailService emailService;
+	
+	@Autowired
+	private AuthService authService;
 	
 	@Autowired
 	private VerifyOtpService verifyOtpService;
@@ -41,4 +46,9 @@ public class EmailController {
 
 	}
 
+	@PostMapping("/password-reset")
+	public EmailResponse passworReset(@Valid @RequestBody PasswordResetDto passwordResetDto) {
+		
+		return authService.passwordReset(passwordResetDto);
+	}
 }

@@ -1,4 +1,4 @@
-package com.example.MatrimonyManagement.service;
+ package com.example.MatrimonyManagement.service;
 
 import com.example.MatrimonyManagement.dto.EmailRequest;
 import com.example.MatrimonyManagement.response.EmailResponse;

@@ -22,5 +22,5 @@ public class TalukaDto {
 //	private LocalDateTime updatedAt;
 	
 	@Min(value = 1, message = "To Customer Id must be greater than 0")
-	private int talukaId;
+	private int districtId;
 }

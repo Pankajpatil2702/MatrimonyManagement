@@ -33,7 +33,7 @@ public class CasteController {
 	@Autowired
 	private ReligionService religionService;
 	
-	@PostMapping
+	@PostMapping("/register")
 	public ResponseEntity<Caste> saveCaste(@Valid @RequestBody CasteDto casteDto){
 		
 		Caste caste = new Caste();

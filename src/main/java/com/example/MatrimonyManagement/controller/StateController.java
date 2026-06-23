@@ -3,11 +3,8 @@ package com.example.MatrimonyManagement.controller;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import javax.net.ssl.HttpsURLConnection;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,7 +28,7 @@ public class StateController {
 	@Autowired
 	private StateService stateService;
 	
-	@PostMapping("/")
+	@PostMapping("/register")
 	public ResponseEntity<State> saveState(@Valid @RequestBody StateDto stateDto){
 		
 		State state = new State();

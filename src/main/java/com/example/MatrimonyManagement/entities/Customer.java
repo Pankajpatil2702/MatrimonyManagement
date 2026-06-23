@@ -32,54 +32,15 @@ public class Customer {
 	private String name;
 	private String email;
 	private long phoneNo;
-	private int age;
-	private String gender;
-	private int height;
-	private String education;
-	private String occupation;
-	private long income;
-	private String materialStatus;
-	private String address;
-	private String token;	
+	private String password;
+	private boolean isActive ;
+	private boolean isBlocked = false;
+	private String token;
+	private Long otp;
+	private Role role;
 	private LocalDateTime createdAt;
 	private LocalDateTime updatedAt;
 	
-	@ManyToOne
-	@JoinColumn(name = "consultancyId")
-	@JsonIgnoreProperties(value = "consultancyId", allowSetters = true)
-	private Consultancy consultancyId;
-	
-	@ManyToOne
-	@JoinColumn(name = "religionId")
-	@JsonIgnoreProperties(value = "religionId" , allowSetters = true)
-	private Religion religionId;
-	
-	@ManyToOne
-	@JoinColumn(name = "casteId")
-	@JsonIgnoreProperties(value = "casteId", allowSetters = true )
-	private Caste casteId;
-	
-	@ManyToOne
-	@JoinColumn(name = "subcasteId")
-	@JsonIgnoreProperties(value = "subcasteId", allowSetters = true)
-	private SubCaste subCasteId;
-	
-	@ManyToOne
-	@JoinColumn(name = "districtId")
-	@JsonIgnoreProperties(value = "districtId", allowSetters = true)
-	private District districtId;
-	
-	@ManyToOne
-	@JoinColumn(name = "talukaId")
-	@JsonIgnoreProperties(value = "talukaId", allowSetters = true)
-	private Taluka talukaId;
-	
-	@ManyToOne
-	@JoinColumn(name = "villageId")
-	@JsonIgnoreProperties(value = "villageId" , allowSetters = true)
-	private Village villageId;
-	
-	
-	
+
 	
 }

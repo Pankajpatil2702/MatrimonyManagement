@@ -28,7 +28,15 @@ public class SecurityConfig {
 			.authorizeHttpRequests(auth -> auth 
 					.requestMatchers("/admin/register",
 					        "/customer/register",
-					        "/auth/login/admin","/email/send","/email/verify-email-otp").permitAll()
+					        "/customer/profile/",
+					        "/customerprofile/register",
+					        "/auth/login/admin","/auth/login/customer","/email/send",
+					        "/email/verify-email-otp",
+					        "/religion/register",
+					        "/caste/register","/state/register","/district/register","/taluka/register","/village/register",
+					        "/subcaste/register",
+					        "/password-reset"
+					        ,"/biodata/download").permitAll()
 					.anyRequest().authenticated()
 					)
 			.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)

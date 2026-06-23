@@ -1,4 +1,4 @@
-package com.example.MatrimonyManagement;
+ package com.example.MatrimonyManagement;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

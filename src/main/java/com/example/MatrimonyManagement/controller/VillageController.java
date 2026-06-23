@@ -34,7 +34,7 @@ public class VillageController {
 	private TalukaService talukaService;
 	
 	
-	@PostMapping("/")
+	@PostMapping("/register")
 	public ResponseEntity<Village> saveVillageData(@Valid @RequestBody VillageDto villageDto){
 		
 		Village village = new Village();

@@ -34,7 +34,7 @@ public class DistrictController {
 	private StateService stateService;
 	
 	
-	@PostMapping("/")
+	@PostMapping("/register")
 	public ResponseEntity<District> saveDistrict(@Valid @RequestBody DistrictDto districtDto){
 		
 		District district = new District();

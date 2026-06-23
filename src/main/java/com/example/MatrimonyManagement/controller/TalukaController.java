@@ -36,7 +36,7 @@ public class TalukaController {
 	private DistrictService districtService;
 	
 	
-	@PostMapping("/")
+	@PostMapping("/register")
 	public ResponseEntity<Taluka> saveTaluka(@Valid @RequestBody TalukaDto talukaDto){
 		
 		Taluka taluka = new Taluka();
@@ -44,7 +44,7 @@ public class TalukaController {
 		taluka.setCreatedAt(LocalDateTime.now());
 		taluka.setUpdatedAt(LocalDateTime.now());
 		
-		District district = districtService.findDistrictById(talukaDto.getTalukaId());
+		District district = districtService.findDistrictById(talukaDto.getDistrictId());
 		
 		if(district == null) {
 			
@@ -104,7 +104,7 @@ public class TalukaController {
 		taluka.setCreatedAt(LocalDateTime.now());
 		taluka.setUpdatedAt(LocalDateTime.now());
 		
-		District district = districtService.findDistrictById(talukaDto.getTalukaId());
+		District district = districtService.findDistrictById(talukaDto.getDistrictId());
 		
 		if(district == null) {
 			

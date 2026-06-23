@@ -34,7 +34,7 @@ public class SubCasteController {
 	private CasteService casteService;
 	
 	
-	@PostMapping("/")
+	@PostMapping("/register")
 	public ResponseEntity<SubCaste> saveSubCaste(@Valid @RequestBody SubCasteDto subCasteDto){
 		
 		SubCaste subCaste = new SubCaste();

@@ -2,5 +2,6 @@ package com.example.MatrimonyManagement.entities;
 
 public enum Role {
 
-	Admin
+	Admin,
+	Customer
 }

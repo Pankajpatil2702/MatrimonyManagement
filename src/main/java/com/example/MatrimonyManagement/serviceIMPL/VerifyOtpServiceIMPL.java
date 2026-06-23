@@ -26,7 +26,7 @@ public class VerifyOtpServiceIMPL implements VerifyOtpService {
 			throw new RuntimeException("Invalid otp...");
 		}
 		admin.setEmailVerify(true);
-		
+		admin.setOtpVerify(true); // next added 
 		adminRepository.save(admin);
 		
 		LoginResponse loginResponse = new LoginResponse();
