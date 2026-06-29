@@ -5,5 +5,9 @@ import com.example.MatrimonyManagement.response.EmailResponse;
 
 public interface EmailService {
 
-	EmailResponse sendEmail(EmailRequest emailRequest);
+//	EmailResponse sendEmail(EmailRequest emailRequest);
+	
+	EmailResponse adminEmail(EmailRequest emailRequest);
+	
+	EmailResponse customerEmail(EmailRequest emailRequest);
 }

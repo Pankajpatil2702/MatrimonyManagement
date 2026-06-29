@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,7 +24,8 @@ import com.example.MatrimonyManagement.service.CustomerService;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/customer")
+@RequestMapping("/customers")
+@CrossOrigin("*")
 public class CustomerController {
 
 	@Autowired
@@ -52,7 +54,7 @@ public class CustomerController {
 		return new ResponseEntity<>(saveCustomer, HttpStatus.CREATED);
 	}
 	
-	@GetMapping("/")
+	@GetMapping("/list")
 	public ResponseEntity<List<Customer>> getAllCustomer(){
 		
 		List<Customer> customer = customerService.getAllCustomer();

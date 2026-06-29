@@ -24,7 +24,7 @@ import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/religion")
-@CrossOrigin
+@CrossOrigin("*")
 public class ReligionController {
 	
 	@Autowired

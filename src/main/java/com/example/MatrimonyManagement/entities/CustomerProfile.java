@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Entity
-@Table(name = "customers")
+@Table(name = "customerprofile")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -28,11 +28,6 @@ public class CustomerProfile {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
-    @ManyToOne
-	@JoinColumn(name = "customer_id")
-	@JsonIgnoreProperties(value = "customer_id", allowSetters = true)
-    private Customer customerid;
 
     private String customerName;
 
@@ -61,6 +56,11 @@ public class CustomerProfile {
 	private String phoneNo;
 	
 	private String city;
+	
+	@ManyToOne
+	@JoinColumn(name = "customer_id")
+	@JsonIgnoreProperties(value = "customer_id", allowSetters = true)
+    private Customer customerid;
 	
     @ManyToOne
    	@JoinColumn(name = "religionId")

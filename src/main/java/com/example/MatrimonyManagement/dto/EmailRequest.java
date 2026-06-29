@@ -11,7 +11,9 @@ import lombok.ToString;
 @ToString
 public class EmailRequest {
 	
-	private String to;
+	private String email;
+	
+//	private String to;
 	
 	private String subject;
 	

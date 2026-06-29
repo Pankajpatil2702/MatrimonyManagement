@@ -2,16 +2,12 @@ package com.example.MatrimonyManagement.entities;
 
 import java.time.LocalDateTime;
 
-import org.hibernate.annotations.ManyToAny;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,6 +20,12 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@Table(name = "customers",
+uniqueConstraints = {
+		@UniqueConstraint(columnNames = "email"),
+		@UniqueConstraint(columnNames = "phoneNo")
+	}
+)
 public class Customer {
 	
 	@Id
@@ -33,10 +35,11 @@ public class Customer {
 	private String email;
 	private long phoneNo;
 	private String password;
-	private boolean isActive ;
-	private boolean isBlocked = false;
+	private Boolean isActive ;
+	private Boolean isBlocked = false;
 	private String token;
 	private Long otp;
+	private Boolean isOtpVerified;
 	private Role role;
 	private LocalDateTime createdAt;
 	private LocalDateTime updatedAt;

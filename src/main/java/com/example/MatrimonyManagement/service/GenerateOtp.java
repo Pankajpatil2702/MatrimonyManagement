@@ -7,9 +7,9 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class GenerateOtp {
 
-	public int generateRandomOtp() {
+	public long generateRandomOtp() {
 		
 		Random random = new Random();
-		return 100000 + random.nextInt(900000);
+		return 100000 + random.nextLong(900000);
 	}
 }
